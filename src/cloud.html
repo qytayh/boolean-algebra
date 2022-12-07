@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>cloud</title>
+  <style>
+  .app {
+    display: flex;
+    align-items: end;
+  }
+
+  .circle{
+    border-radius: 50%;
+    border-width: 2px;
+    border-color: #919191;
+    background: #d7d7d7;
+    position: relative;
+  }
+
+  .circle-left{
+    width: 48px;
+    height: 48px;
+    left: 24px;
+    animation: left 4s;
+  }
+
+  .circle-center{
+    width: 66px;
+    height: 66px;
+  }
+
+  .circle-right{
+    width: 40px;
+    height: 40px;
+    right: 20px;
+    animation: right 4s;
+  }
+
+  @keyframes left {
+      0%{
+        left: 0;
+      }
+
+      25%{
+          left: 0;
+      }
+
+      100%{
+        left: 24px;
+      }
+
+  }
+
+  @keyframes right {
+      0%{
+          right: 0;
+      }
+
+      25%{
+          right: 0;
+      }
+
+      100%{
+          right: 20px;
+      }
+
+  }
+  </style>
+</head>
+<body>
+
+<div class="app">
+  <div class="circle circle-left"></div>
+  <div class="circle circle-center"></div>
+  <div class="circle circle-right"></div>
+</div>
+
+</body>
+</html>
