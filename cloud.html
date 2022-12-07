@@ -2,12 +2,38 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>cloud</title>
+  <title>cloud animation</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
   <style>
-  .circle-container {
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  .animation-container {
+    position: relative;
+  }
+
+  .cloud-container {
     display: flex;
     align-items: end;
+    position: absolute;
+    overflow: hidden;
   }
+
+  .cloud-animation-right {
+    animation: cloud-right 1s forwards linear;
+    animation-delay: 5s;
+  }
+
 
   .circle{
     border-radius: 50%;
@@ -20,8 +46,7 @@
   .circle-left{
     width: 48px;
     height: 48px;
-    left: 24px;
-    animation: left 4s forwards linear;;
+    animation: left 4s forwards linear;
   }
 
   .circle-center{
@@ -32,80 +57,93 @@
   .circle-right{
     width: 40px;
     height: 40px;
-    right: 20px;
     animation: right 4s forwards linear;
   }
 
   .cover{
-      background: #fff;
-      height: 40px;
-      position: relative;
-      bottom: 8px;
-      animation: cover-top 6s forwards linear;;
+    height: 40px;
+    width: 150px;
+    position: absolute;
+    animation: cover 2s forwards linear;
+    animation-delay: 4s;
   }
 
   @keyframes left {
-      0%{
-        left: 0;
-      }
+    0%{
+      transform: translateX(0);
+    }
 
-      25%{
-          left: 0;
-      }
+    25%{
+      transform: translateX(0);
+    }
 
-      100%{
-        left: 24px;
-      }
-
+    100%{
+      transform: translateX(24px);
+    }
   }
 
   @keyframes right {
-      0%{
-          right: 0;
-      }
+    0%{
+      transform: translateX(0);
+    }
 
-      25%{
-          right: 0;
-      }
+    25%{
+      transform: translateX(0);
+    }
 
-      100%{
-          right: 20px;
-      }
-
+    100%{
+      transform: translateX(-20px);
+    }
   }
 
-  @keyframes cover-top {
+  @keyframes cover {
     0% {
-      bottom: 0;
+      transform: translateY(80px);
       background: #ccc;
     }
 
-    70% {
-      bottom: 0;
+    50%{
+      transform: translateY(60px);
       background: #ccc;
     }
 
-    75% {
-      bottom: 1px;
-      background: #e0e0e0;
-    }
-
-    100% {
-      bottom: 8px;
+    100%{
+      transform: translateY(60px);
       background: #fff;
+    }
+  }
+
+  @keyframes cloud-right {
+    to {
+      opacity: 0.7;
+      transform: translateX(16px) translateY(-10px);
     }
   }
   </style>
 </head>
 <body>
 
-<div class="circle-container">
-  <div class="circle circle-left"></div>
-  <div class="circle circle-center"></div>
-  <div class="circle circle-right"></div>
-</div>
+<div class="animation-container">
 
-<div class="cover">
+  <div class="cloud-animation-left">
+    <div class="cloud-container">
+      <div class="circle circle-left"></div>
+      <div class="circle circle-center"></div>
+      <div class="circle circle-right"></div>
+    </div>
+
+    <div class="cover"></div>
+  </div>
+
+  <div class="cloud-animation-right">
+    <div class="cloud-container">
+      <div class="circle circle-left"></div>
+      <div class="circle circle-center"></div>
+      <div class="circle circle-right"></div>
+    </div>
+
+    <div class="cover"></div>
+  </div>
 
 </div>
 
