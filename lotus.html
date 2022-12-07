@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+  <title>lotus animation</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .animation-container {
+      position: relative;
+      width: 80px;
+      height: 80px;
+    }
+
+    .circle {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+
+    .circle-left-inner {
+      width: 100%;
+      height: 100%;
+      background: #F8BBD0;
+      border-radius: 50%;
+      animation: circle-left-inner 1s forwards linear;
+      animation-delay: 1s;
+    }
+
+    .circle-right-inner {
+      width: 100%;
+      height: 100%;
+      background: #F8BBD0;
+      border-radius: 50%;
+      animation: circle-right-inner 1s forwards linear;
+      animation-delay: 1s;
+    }
+
+    .circle-left {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      animation: circle-left 1s forwards linear;
+      animation-delay: 2s;
+    }
+
+    .circle-left[data-mask] {
+      background: #2196F3;
+    }
+
+    .circle-right {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      animation: circle-right 1s forwards linear;
+      animation-delay: 2s;
+    }
+
+    .circle-animation {
+      animation: circle-animation 1s forwards linear;
+      animation-delay: 3s;
+    }
+
+    .circle-animation-left {
+      animation: circle-animation-left 1s forwards ease-in-out;
+      animation-delay: 3s;
+    }
+
+    .circle-animation-right {
+      animation: circle-animation-right 1s forwards ease-in-out;
+      animation-delay: 3s;
+    }
+
+    @keyframes circle-left-inner {
+      to {
+        transform: translateX(62px);
+      }
+    }
+
+    @keyframes circle-right-inner {
+      to {
+        transform: translateX(-62px);
+      }
+    }
+
+    @keyframes circle-left {
+      to {
+        transform: translateX(-40px);
+      }
+    }
+
+    @keyframes circle-right {
+      to {
+        transform: translateX(40px);
+      }
+    }
+
+    @keyframes circle-animation {
+      to {
+        opacity: 0.6;
+        transform: translateY(-4px);
+      }
+    }
+
+    @keyframes circle-animation-left {
+      to {
+        transform: translateX(-3px) rotate(32deg);
+        transform-origin: bottom;
+        opacity: 0.8;
+      }
+    }
+
+    @keyframes circle-animation-right {
+      to {
+        transform: translateX(3px) rotate(-32deg);
+        transform-origin: bottom;
+        opacity: 0.8;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="animation-container">
+  <div class="circle circle-animation-left">
+    <div class="circle-left">
+      <div class="circle-left-inner"></div>
+    </div>
+    <div class="circle-right">
+      <div class="circle-right-inner"></div>
+    </div>
+  </div>
+
+  <div class="circle circle-animation">
+    <div class="circle-left">
+      <div class="circle-left-inner"></div>
+    </div>
+    <div class="circle-right">
+      <div class="circle-right-inner"></div>
+    </div>
+  </div>
+
+  <div class="circle circle-animation-right">
+    <div class="circle-left">
+      <div class="circle-left-inner"></div>
+    </div>
+    <div class="circle-right">
+      <div class="circle-right-inner"></div>
+    </div>
+  </div>
+</div>
+</body>
+
+<script>
+  const initMask = false
+
+  if (initMask) {
+    document.querySelectorAll('.circle-left').forEach((el) => {
+      el.toggleAttribute('data-mask')
+    })
+  }
+
+  window.addEventListener('keyup', (event) => {
+    if (event.code === 'Space') {
+      document.querySelectorAll('.circle-left').forEach((el) => {
+        el.toggleAttribute('data-mask')
+      })
+    }
+  })
+</script>
+</html>
